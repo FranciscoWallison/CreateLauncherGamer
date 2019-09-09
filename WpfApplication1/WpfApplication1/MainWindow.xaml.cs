@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using System.Windows.Input;
+
 
 namespace WpfApplication1
 {
@@ -21,6 +23,9 @@ namespace WpfApplication1
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
+
+            Cursor cursor = new Cursor("C:/Users/wallison.nascimento/Documents/Visual Studio 2015/Projects/WpfApplication1/WpfApplication1/defaultRag.ani");
+            mainWindow.Cursor = cursor;
         }
 
         void timer_Tick(object sender, EventArgs e)
@@ -55,35 +60,69 @@ namespace WpfApplication1
         //Hover
         private void image1_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            image1.Source = new BitmapImage(new Uri("./skipBtn.png", UriKind.Relative));            
-
+            image1.Source = new BitmapImage(new Uri("./skipBtn.png", UriKind.Relative));
+            Cursor cursor = new Cursor("C:/Users/wallison.nascimento/Documents/Visual Studio 2015/Projects/WpfApplication1/WpfApplication1/defaultRag.ani");
+            mainWindow.Cursor = cursor;
         }
         //Hover
         private void image1_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
             image1.Source = new BitmapImage(new Uri("./skipBtnHover.png", UriKind.Relative));
-            
+            clickRagOff();
         }
         //Click
         private void image1_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine("image1_MouseDown");
+        {           
+            clickRagOn();
             this.CloseAllWindows();
         }
         private void ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            clickRagOn();
             volHist = e.NewValue;
             mePlayer.Volume = e.NewValue;
+            //clickRagOff();
         }
 
         private void checkBox_Checked(object sender, RoutedEventArgs e)
-        {           
+        {
+            clickRagOn();
             mePlayer.Volume = 0;
+            //clickRagOff();
         }
 
         private void checkBox_Unchecked(object sender, RoutedEventArgs e)
         {
+            clickRagOn();
             mePlayer.Volume = volHist;
+            //clickRagOff();
+        }
+  
+        private void checkBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            clickRagOff();
+        }
+
+        private void checkBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            clickRagOn();
+        }
+
+        private void checkBox_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor cursor = new Cursor("C:/Users/wallison.nascimento/Documents/Visual Studio 2015/Projects/WpfApplication1/WpfApplication1/defaultRag.ani");
+            mainWindow.Cursor = cursor;
+        }
+
+        private void clickRagOn() {
+            Cursor cursor = new Cursor("C:/Users/wallison.nascimento/Documents/Visual Studio 2015/Projects/WpfApplication1/WpfApplication1/pressClickRag.ani");
+            mainWindow.Cursor = cursor;
+        }
+
+        private void clickRagOff()
+        {
+            Cursor cursor = new Cursor("C:/Users/wallison.nascimento/Documents/Visual Studio 2015/Projects/WpfApplication1/WpfApplication1/pressRag.cur");
+            mainWindow.Cursor = cursor;
         }
 
         //close main

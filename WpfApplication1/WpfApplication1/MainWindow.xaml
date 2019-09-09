@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
         WindowStyle="None"
+        x:Name="mainWindow"
         Title="MainWindow" Height="240" Width="520" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
-        WindowStartupLocation="CenterScreen" Cursor="Cross" ResizeMode="NoResize">
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
 
         <MediaElement x:Name="mePlayer" LoadedBehavior="Play" Source=".\t.mp4"/>
@@ -20,7 +21,8 @@
                 ></Image>
         <CheckBox x:Name="checkBox" Content="Desativar Som" Foreground="White"
                   HorizontalAlignment="Left" Margin="344,206,0,0" VerticalAlignment="Top"
-                  Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" FontFamily="Trebuchet MS" FontWeight="Bold"/>
+                  Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" FontFamily="Trebuchet MS" FontWeight="Bold"
+                  MouseDown="checkBox_MouseDown" MouseEnter="checkBox_MouseEnter" MouseLeave="checkBox_MouseLeave"/>
 
     </Grid>
 </Window>

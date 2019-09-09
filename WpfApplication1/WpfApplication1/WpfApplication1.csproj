@@ -96,6 +96,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="pressRag.cur" />
     <Resource Include="skipBtn.png" />
     <Resource Include="skipBtnHover.png" />
     <Content Include="t.mp4" />
