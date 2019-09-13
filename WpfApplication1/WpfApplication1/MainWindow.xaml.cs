@@ -22,12 +22,14 @@ namespace WpfApplication1
         {
             InitializeComponent();
 
+            string teste = validLocation();
+
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
 
-            Cursor cursor = new Cursor("C:/Users/wallison.nascimento/Documents/Visual Studio 2015/Projects/WpfApplication1/WpfApplication1/defaultRag.ani");
+            Cursor cursor = new Cursor(validLocation() + "defaultRag.ani");
             mainWindow.Cursor = cursor;
         }
 
@@ -63,14 +65,14 @@ namespace WpfApplication1
         //Hover
         private void image1_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            image1.Source = new BitmapImage(new Uri("./skipBtn.png", UriKind.Relative));
-            Cursor cursor = new Cursor("C:/Users/wallison.nascimento/Documents/Visual Studio 2015/Projects/WpfApplication1/WpfApplication1/defaultRag.ani");
+            image1.Source = new BitmapImage(new Uri(validLocation() + "skipBtn.png", UriKind.Relative));
+            Cursor cursor = new Cursor(validLocation() + "defaultRag.ani");
             mainWindow.Cursor = cursor;
         }
         //Hover
         private void image1_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            image1.Source = new BitmapImage(new Uri("./skipBtnHover.png", UriKind.Relative));
+            image1.Source = new BitmapImage(new Uri(validLocation() + "skipBtnHover.png", UriKind.Relative));
             clickRagOff();
         }
         //Click
@@ -120,18 +122,18 @@ namespace WpfApplication1
         }       
         private void checkBox_MouseLeave(object sender, MouseEventArgs e)
         {
-            Cursor cursor = new Cursor("C:/Users/wallison.nascimento/Documents/Visual Studio 2015/Projects/WpfApplication1/WpfApplication1/defaultRag.ani");
+            Cursor cursor = new Cursor(validLocation() + "defaultRag.ani");
             mainWindow.Cursor = cursor;
         }
 
         private void clickRagOn() {
-            Cursor cursor = new Cursor("C:/Users/wallison.nascimento/Documents/Visual Studio 2015/Projects/WpfApplication1/WpfApplication1/pressClickRag.ani");
+            Cursor cursor = new Cursor(validLocation() + "pressClickRag.ani");
             mainWindow.Cursor = cursor;
         }
 
         private void clickRagOff()
         {
-            Cursor cursor = new Cursor("C:/Users/wallison.nascimento/Documents/Visual Studio 2015/Projects/WpfApplication1/WpfApplication1/pressRag.cur");
+            Cursor cursor = new Cursor(validLocation()+ "pressRag.cur");
             mainWindow.Cursor = cursor;
         }
 
@@ -140,6 +142,14 @@ namespace WpfApplication1
         {
             for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
                 App.Current.Windows[intCounter].Close();
+        }
+
+        private string validLocation()
+        {
+            string path = System.AppDomain.CurrentDomain.BaseDirectory.ToString();
+            string path2 = path.Replace('\\', '/');           
+
+            return path2+ "/bin/Release/";
         }
 
         public class Employeedata
