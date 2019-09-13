@@ -65,14 +65,14 @@ namespace WpfApplication1
         //Hover
         private void image1_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            image1.Source = new BitmapImage(new Uri(validLocation() + "skipBtn.png", UriKind.Relative));
+            image1.Source = new BitmapImage(new Uri("./skipBtn.png", UriKind.Relative));
             Cursor cursor = new Cursor(validLocation() + "defaultRag.ani");
             mainWindow.Cursor = cursor;
         }
         //Hover
         private void image1_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            image1.Source = new BitmapImage(new Uri(validLocation() + "skipBtnHover.png", UriKind.Relative));
+            image1.Source = new BitmapImage(new Uri("./skipBtnHover.png", UriKind.Relative));
             clickRagOff();
         }
         //Click

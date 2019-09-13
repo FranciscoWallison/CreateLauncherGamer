@@ -15,7 +15,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\wallison.nascimento\Documents\Visual Studio 2015\Projects\WpfApplication1\</PublishUrl>
+    <PublishUrl>C:\Users\wallison.nascimento\Documents\Visual Studio 2015\Projects\WpfApplication1\public\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
