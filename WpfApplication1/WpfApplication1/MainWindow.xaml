@@ -9,11 +9,121 @@
         x:Name="mainWindow"
         Title="MainWindow" Height="240" Width="520" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Window.Resources>
+
+        <BooleanToVisibilityConverter x:Key="btv" />
+
+        <!-- style a top level menu item -->
+        <ControlTemplate x:Key="VsMenuTop" TargetType="MenuItem">
+            <StackPanel TextBlock.FontSize="12px" TextBlock.FontWeight="Medium" Height="25" Width="90">
+
+                <!-- label, icons, etc. -->
+                <Label Content="{TemplateBinding Header}" Margin="0,0,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26"  />
+
+                <!-- sub items -->
+                <Popup IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False" >
+                    <Border BorderThickness="1" Background="#020202"  BorderBrush="#020202" Opacity="0.80">
+                        <StackPanel IsItemsHost="True" />
+                    </Border>
+                    
+                </Popup>
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"  Value="True">
+                                <Setter Property="Background" Value="#020202" />
+                                <Setter Property="Cursor" Value="pressRag.cur" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+            </StackPanel>
+        </ControlTemplate>
+
+       
+        <!-- style a non-top level menu item -->
+        <ControlTemplate x:Key="VsMenuSub" TargetType="MenuItem" >
+            
+            <DockPanel TextBlock.FontSize="10px" x:Name="panel" >
+                
+                <!-- label, icons, etc. -->
+                <Image Source="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}" Width="20" Margin="5,0" />
+                <Label Content="{TemplateBinding Header}" Foreground="Wheat" Opacity="60" Margin="0,5,5,5"  />
+
+                <!-- draw the right arrow only if this menu item has sub items -->
+                <Image Visibility="{Binding HasItems, Converter={StaticResource btv}, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                <!-- sub items -->
+                <Popup IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False" Placement="Right" >
+                    <Border BorderThickness="1" Background="#020202" BorderBrush="#020202" Opacity="0.25">
+                        <StackPanel IsItemsHost="True" Opacity="0.25" />
+                    </Border>
+                    
+                </Popup>
+                
+            </DockPanel>
+            
+            <ControlTemplate.Triggers>
+                
+                <Trigger Property="IsHighlighted" Value="True" >
+                    <Setter Property="Background" TargetName="panel" Value="#EFF6FC" />
+                </Trigger>
+                <Trigger Property="IsMouseOver"  Value="True">
+                    <Setter Property="Background" Value="#020202" />
+                    <Setter Property="Cursor" Value="pressRag.cur" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+            
+        </ControlTemplate>
+
+        <!-- style the separator -->
+        <ControlTemplate x:Key="VsMenuSep" TargetType="Separator">
+            <Border Height="1" Background="#E0E0E0" />
+        </ControlTemplate>
+
+        <!-- style the VSOnline -->
+        <ControlTemplate x:Key="VsOnline" TargetType="MenuItem">
+            <StackPanel TextBlock.FontSize="12px" TextBlock.FontWeight="Medium" Height="25" Width="18" Orientation="Horizontal" Background="#081015">
+                <Label Content="{TemplateBinding Header}" Margin="0,0,0,0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"  />
+                <Image Height="20" Margin="0,0,0,0" />
+
+                <!-- sub items -->
+                <Popup IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False">
+                    <Border BorderThickness="1" Background="White" BorderBrush="#E0E0E0">
+                        <StackPanel IsItemsHost="True" />
+                    </Border>
+                </Popup>
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"  Value="True">
+                                <Setter Property="Background" Value="#020202" />
+                                <Setter Property="Cursor" Value="pressRag.cur" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+            </StackPanel>
+            
+        </ControlTemplate>
+
+        <!-- some base stuff -->
+        <Style TargetType="Menu" >
+            <Setter Property="Background" Value="#020202" />
+            <Setter Property="Height" Value="25px" />
+            <Setter Property="Opacity" Value="0.65" />
+
+        </Style>
+
+    </Window.Resources>
+
+
     <Grid>
 
-        <MediaElement x:Name="mePlayer" LoadedBehavior="Play" Source=".\t.mp4"/>
-        <Slider Minimum="0" Maximum="100" Visibility="Hidden" ValueChanged="ValueChanged" Margin="57,215,404,10" Value="50"/>
-        
+        <MediaElement x:Name="mePlayer" LoadedBehavior="Play" Source=".\bin\Release\t.mp4"/>
+        <Slider Minimum="0" Maximum="100" Visibility="Hidden" ValueChanged="ValueChanged" Value="50"/>
+
         <Image Margin="450,194,10,9"  x:Name="image1"
                Source=".\skipBtn.png" 
                MouseLeave="image1_MouseLeave" MouseDown="image1_MouseDown" MouseEnter="image1_MouseEnter"
@@ -23,6 +133,19 @@
                   HorizontalAlignment="Left" Margin="344,206,0,0" VerticalAlignment="Top"
                   Checked="checkBox_Checked" Unchecked="checkBox_Unchecked" FontFamily="Trebuchet MS" FontWeight="Bold"
                   MouseDown="checkBox_MouseDown" MouseEnter="checkBox_MouseEnter" MouseLeave="checkBox_MouseLeave"/>
+
+
+        <StackPanel>
+            <Menu IsMainMenu="True" VerticalAlignment="Top" HorizontalAlignment="Right" >
+                <MenuItem Header="_MENU"  Template="{StaticResource VsMenuTop}">
+                    <MenuItem Header="_YouTube" MouseDown="youTube_MouseDown" Template="{StaticResource VsMenuSub}" Icon="youTube.png" />
+                    <MenuItem Header="_Discord" MouseDown="discord_MouseDown" Template="{StaticResource VsMenuSub}" Icon="discord.png" />
+                </MenuItem>
+                <MenuItem Header="_X" Template="{StaticResource VsOnline}" >
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
 
     </Grid>
 </Window>

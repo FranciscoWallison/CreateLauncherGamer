@@ -1,5 +1,4 @@
 c:\users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.exe.config
-c:\users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.csprojResolveAssemblyReference.cache
 c:\users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\MainWindow.g.cs
 c:\users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\App.g.cs
 c:\users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1_Content.g.cs
@@ -13,3 +12,8 @@ c:\users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplicatio
 c:\users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.csproj.GenerateResource.Cache
 c:\users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.exe
 c:\users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.pdb
+C:\Users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.exe.manifest
+C:\Users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.application
+C:\Users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.csprojResolveAssemblyReference.cache
+C:\Users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.exe.manifest
+C:\Users\wallison.nascimento\documents\visual studio 2015\Projects\WpfApplication1\WpfApplication1\obj\Debug\WpfApplication1.application

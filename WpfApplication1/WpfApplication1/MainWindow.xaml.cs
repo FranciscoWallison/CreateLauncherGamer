@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using System.Windows.Input;
+using System.Collections.Generic;
+
 
 
 namespace WpfApplication1
@@ -14,6 +16,7 @@ namespace WpfApplication1
     {
         double volHist; //remembering the volume for mute toggle   
         DispatcherTimer hide = new DispatcherTimer(); //time to hide the controll bar (global in order to be used in action listener)
+        List<Employeedata> Employeedatalist = new List<Employeedata>();
 
         public MainWindow()
         {
@@ -107,7 +110,14 @@ namespace WpfApplication1
         {
             clickRagOn();
         }
-
+        private void youTube_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            clickRagOn();
+        }
+        private void discord_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            clickRagOn();
+        }       
         private void checkBox_MouseLeave(object sender, MouseEventArgs e)
         {
             Cursor cursor = new Cursor("C:/Users/wallison.nascimento/Documents/Visual Studio 2015/Projects/WpfApplication1/WpfApplication1/defaultRag.ani");
@@ -132,5 +142,11 @@ namespace WpfApplication1
                 App.Current.Windows[intCounter].Close();
         }
 
+        public class Employeedata
+        {
+            public int ID { get; set; }
+            public string Photo { get; set; }
+            public string Name { get; set; }
+        }
     }
 }
